@@ -66,7 +66,7 @@ async function seedDatabase() {
     const projectsData = [
       {
         title: "LiDAR-Powered Autonomous Mapping & Navigation",
-        description: "Deployed 2D LiDAR-based SLAM pipeline using SLAM Toolbox inside a Gazebo-simulated multi-obstacle environment. Achieved real-time occupancy grid map generation with full robot trajectory visualization and loop-closure in RViz. Tuned SLAM Toolbox parameters for robust scan-matching and drift correction.",
+        description: "Deployed 2D LiDAR-based SLAM pipeline using SLAM Toolbox inside a Gazebo-simulated multi-obstacle environment. Achieved real-time occupancy grid map generation with full robot trajectory visualization and loop-closure in RViz.",
         technologies: ["ROS 2", "Gazebo", "SLAM Toolbox", "Nav2", "AMCL"],
         category: "Robotics",
         link: "https://drive.google.com/file/d/1pskf5J4I6OG_EVLog-Po9VqRFDxYvnbR/view",
@@ -80,14 +80,14 @@ async function seedDatabase() {
       },
       {
         title: "Soil Grain Detection & Mapping System",
-        description: "Built custom YOLO-based object detection model for real-time soil type classification (Red, Black, Perlite, Mixed Soil). Integrated GPS coordinate mapping with Folium library for real-time visualization of soil distribution heatmaps.",
+        description: "Built custom YOLO-based object detection model for real-time soil type classification (Red, Black, Perlite, Mixed Soil). Collected, annotated, and trained dataset using transfer learning techniques achieving 92% accuracy.",
         technologies: ["Python", "YOLO", "OpenCV", "Folium", "Google Colab"],
         category: "AI/CV",
         link: "https://www.youtube.com/watch?v=Gqag98Drhi4",
       },
       {
         title: "PID Line-Following Robot",
-        description: "Designed and fabricated custom robot chassis using CAD software with optimized sensor placement. Implemented PID control algorithm in C for precise line tracking with real-time tuning of Kp, Ki, and Kd parameters.",
+        description: "Designed and fabricated custom robot chassis using CAD software with optimized sensor placement for line detection. Implemented PID control algorithm in C for precise line tracking.",
         technologies: ["Arduino", "C", "PID Control", "CAD Design"],
         category: "Embedded",
         link: null,
