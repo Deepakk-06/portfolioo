@@ -51,11 +51,12 @@ async function seedDatabase() {
 
     const skillsData = [
       { category: "Programming Languages", items: ["Python", "C", "Arduino C"] },
-      { category: "Robotics Frameworks", items: ["ROS 2 (Jazzy)", "micro-ROS", "Navigation2 (Nav2)", "SLAM Toolbox", "AMCL"] },
-      { category: "Core Concepts", items: ["Nodes", "Topics", "Services", "Actions", "TF Transforms", "URDF"] },
-      { category: "Computer Vision & AI", items: ["YOLO", "OpenCV", "Image Processing", "Model Training"] },
-      { category: "Embedded Systems", items: ["ESP32", "Arduino Uno/Mega", "Raspberry Pi", "Sensors (LiDAR, IMU)"] },
-      { category: "Tools", items: ["RViz", "Gazebo", "Git/GitHub", "Linux (Ubuntu)", "CAD"] }
+      { category: "Robotics Frameworks", items: ["ROS 2 (Jazzy)", "micro-ROS", "Navigation2 (Nav2)", "SLAM Toolbox", "AMCL Localization"] },
+      { category: "Core Concepts", items: ["Nodes", "Topics", "Services", "Actions", "TF Transforms", "URDF", "Launch Files", "Parameters", "Behavior Trees"] },
+      { category: "Computer Vision & AI", items: ["YOLO (Object Detection)", "OpenCV", "Image Processing", "Model Training", "Transfer Learning"] },
+      { category: "Embedded Systems", items: ["ESP32", "Arduino Uno/Mega", "Raspberry Pi", "Real-Time Systems", "Sensor Fusion"] },
+      { category: "Hardware & Sensors", items: ["LiDAR", "IMU", "Odometry Encoders", "Load Cells", "IR Sensor Arrays", "Ultrasonic Sensors", "Motor Drivers"] },
+      { category: "Development Tools", items: ["RViz", "Gazebo", "Arduino IDE", "Linux (Ubuntu)", "Google Colab"] }
     ];
 
     for (const skill of skillsData) {
@@ -65,38 +66,38 @@ async function seedDatabase() {
     const projectsData = [
       {
         title: "LiDAR-Powered Autonomous Mapping & Navigation",
-        description: "Deployed 2D LiDAR-based SLAM pipeline using SLAM Toolbox inside a Gazebo-simulated multi-obstacle environment. Achieved real-time occupancy grid map generation with full robot trajectory visualization.",
+        description: "Deployed 2D LiDAR-based SLAM pipeline using SLAM Toolbox inside a Gazebo-simulated multi-obstacle environment. Achieved real-time occupancy grid map generation with full robot trajectory visualization and loop-closure in RViz. Tuned SLAM Toolbox parameters for robust scan-matching and drift correction.",
         technologies: ["ROS 2", "Gazebo", "SLAM Toolbox", "Nav2", "AMCL"],
         category: "Robotics",
-        link: "#",
+        link: "https://drive.google.com/file/d/1pskf5J4I6OG_EVLog-Po9VqRFDxYvnbR/view",
       },
       {
         title: "Human-Robot Interaction System using micro-ROS",
-        description: "Developed real-time gesture-based robot control system integrating micro-ROS with ROS 2 Jazzy. Implemented gesture recognition pipeline to map human hand motions into robot velocity commands.",
+        description: "Developed real-time gesture-based robot control system integrating micro-ROS with ROS 2 Jazzy for low-latency teleoperation. Implemented gesture recognition pipeline to map human hand motions into robot velocity commands via ROS 2 topics.",
         technologies: ["ROS 2", "ESP32", "micro-ROS", "Python"],
         category: "Robotics",
-        link: "#",
+        link: "https://drive.google.com/file/d/1vyNcxMrZcYwuTVy3O-ixH8Pn5xwWKJGN/view",
       },
       {
         title: "Soil Grain Detection & Mapping System",
-        description: "Built custom YOLO-based object detection model for real-time soil type classification (Red, Black, Perlite, Mixed). Collected and trained dataset achieving 92% accuracy.",
+        description: "Built custom YOLO-based object detection model for real-time soil type classification (Red, Black, Perlite, Mixed Soil). Integrated GPS coordinate mapping with Folium library for real-time visualization of soil distribution heatmaps.",
         technologies: ["Python", "YOLO", "OpenCV", "Folium", "Google Colab"],
         category: "AI/CV",
-        link: "#",
+        link: "https://www.youtube.com/watch?v=Gqag98Drhi4",
       },
       {
         title: "PID Line-Following Robot",
-        description: "Designed and fabricated custom robot chassis. Implemented PID control algorithm in C for precise line tracking with real-time tuning of Kp, Ki, and Kd parameters.",
-        technologies: ["Arduino", "C", "PID Control", "CAD"],
+        description: "Designed and fabricated custom robot chassis using CAD software with optimized sensor placement. Implemented PID control algorithm in C for precise line tracking with real-time tuning of Kp, Ki, and Kd parameters.",
+        technologies: ["Arduino", "C", "PID Control", "CAD Design"],
         category: "Embedded",
-        link: "#",
+        link: null,
       },
       {
         title: "TeleOperated Mobile Manipulation Platform",
-        description: "Developed integrated mobile platform with 4-DOF robotic arm for autonomous pick-and-place. Implemented inverse and forward kinematics algorithms.",
+        description: "Developed integrated mobile platform with 4-DOF robotic arm for autonomous pick-and-place task execution. Implemented inverse and forward kinematics algorithms for precise end-effector positioning.",
         technologies: ["ESP32", "Kinematics", "Arduino IDE", "Wireless Control"],
         category: "Robotics",
-        link: "#",
+        link: null,
       }
     ];
 
