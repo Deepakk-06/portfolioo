@@ -66,8 +66,8 @@ export default function Home() {
                   strings: [
                     'EEE Student.',
                     'Robotics Enthusiast.',
-                    'Embedded Systems Dev.',
-                    'ROS 2 Developer.'
+                    'Embedded Systems.',
+                    'ROS 2.'
                   ],
                   autoStart: true,
                   loop: true,
@@ -92,10 +92,10 @@ export default function Home() {
               <Button 
                 variant="outline"
                 className="h-12 px-8 font-mono rounded-none border-border hover:bg-secondary transition-colors group"
-                onClick={() => window.open("/Deepak_K_Resume.pdf", "_blank")}
+                onClick={() => window.open("https://drive.google.com/file/d/16i5VRggvOxp-5kzRDmh48EcWKlTWRMtI/view?usp=sharing", "_blank")}
               >
                 <Download className="mr-2 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-                Download CV
+                Download Resume
               </Button>
             </div>
           </motion.div>

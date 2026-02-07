@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Video, Github } from "lucide-react";
+import { ExternalLink, Video } from "lucide-react";
 import { type Project } from "@shared/schema";
 import { Badge } from "@/components/ui/badge";
 
@@ -28,26 +28,19 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </h3>
           </div>
           <div className="flex space-x-2">
-            {project.videoLink && (
-              <a
-                href={project.videoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary/50 hover:bg-white text-muted-foreground hover:text-black transition-all"
-                title="Watch Demo"
-              >
-                <Video className="w-4 h-4" />
-              </a>
-            )}
             {project.link && (
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-secondary/50 hover:bg-white text-muted-foreground hover:text-black transition-all"
-                title="View Code/Project"
+                title="View Project Demo"
               >
-                <Github className="w-4 h-4" />
+                {project.link.includes('youtube.com') || project.link.includes('youtu.be') ? (
+                  <Video className="w-4 h-4" />
+                ) : (
+                  <ExternalLink className="w-4 h-4" />
+                )}
               </a>
             )}
           </div>

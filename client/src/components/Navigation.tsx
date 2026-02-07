@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -43,11 +43,11 @@ export function Navigation() {
           ))}
           <div className="h-4 w-px bg-border mx-2" />
           <div className="flex items-center space-x-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://linkedin.com/in/deepak-k-637839283" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="mailto:deeeeps06@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Mail className="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -81,10 +81,7 @@ export function Navigation() {
               </a>
             ))}
             <div className="pt-4 border-t border-border flex space-x-6">
-              <a href="https://github.com" className="text-muted-foreground hover:text-foreground">
-                <Github className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com" className="text-muted-foreground hover:text-foreground">
+              <a href="https://linkedin.com/in/deepak-k-637839283" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
                 <Linkedin className="w-6 h-6" />
               </a>
               <a href="mailto:deeeeps06@gmail.com" className="text-muted-foreground hover:text-foreground">
