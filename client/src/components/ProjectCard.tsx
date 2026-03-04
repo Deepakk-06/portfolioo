@@ -38,14 +38,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           <div className="flex space-x-2">
             {project.videoUrl && (
-              
-                href={project.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary/50 hover:bg-white text-muted-foreground hover:text-black transition-all"
-                title="View Project Demo"
-              >
-                {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('youtu.be') ? (
+              <a href={project.videoUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary/50 hover:bg-white text-muted-foreground hover:text-black transition-all" title="View Project Demo">
+                {project.videoUrl.includes("youtube.com") || project.videoUrl.includes("youtu.be") ? (
                   <Video className="w-4 h-4" />
                 ) : (
                   <ExternalLink className="w-4 h-4" />
@@ -59,11 +53,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </p>
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map((tech) => (
-            <Badge
-              key={tech}
-              variant="secondary"
-              className="text-xs font-mono bg-secondary/40 hover:bg-secondary/60 text-secondary-foreground/80"
-            >
+            <Badge key={tech} variant="secondary" className="text-xs font-mono bg-secondary/40 hover:bg-secondary/60 text-secondary-foreground/80">
               {tech}
             </Badge>
           ))}
