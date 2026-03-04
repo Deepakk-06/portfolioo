@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Video } from "lucide-react";
-import { type Project } from "@shared/schema";
 import { Badge } from "@/components/ui/badge";
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  githubUrl: string | null;
+  videoUrl: string | null;
+}
 
 interface ProjectCardProps {
   project: Project;
@@ -28,15 +37,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </h3>
           </div>
           <div className="flex space-x-2">
-            {project.link && (
-              <a
-                href={project.link}
+            {project.videoUrl && (
+              
+                href={project.videoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-secondary/50 hover:bg-white text-muted-foreground hover:text-black transition-all"
                 title="View Project Demo"
               >
-                {project.link.includes('youtube.com') || project.link.includes('youtu.be') ? (
+                {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('youtu.be') ? (
                   <Video className="w-4 h-4" />
                 ) : (
                   <ExternalLink className="w-4 h-4" />
@@ -45,16 +54,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             )}
           </div>
         </div>
-        
         <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
           {project.description}
         </p>
-
         <div className="flex flex-wrap gap-2 mt-auto">
-          {project.technologies.map((tech) => (
-            <Badge 
-              key={tech} 
-              variant="secondary" 
+          {project.tags.map((tech) => (
+            <Badge
+              key={tech}
+              variant="secondary"
               className="text-xs font-mono bg-secondary/40 hover:bg-secondary/60 text-secondary-foreground/80"
             >
               {tech}
