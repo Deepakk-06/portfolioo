@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertMessageSchema, type InsertMessage } from "@shared/schema";
+import { z } from "zod";
 import { useContact } from "@/hooks/use-portfolio";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,11 +8,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Loader2, Send } from "lucide-react";
 
+const contactSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email"),
+  message: z.string().min(1, "Message is required"),
+});
+
+type ContactData = z.infer<typeof contactSchema>;
+
 export function ContactForm() {
   const mutation = useContact();
-  
-  const form = useForm<InsertMessage>({
-    resolver: zodResolver(insertMessageSchema),
+
+  const form = useForm<ContactData>({
+    resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -20,7 +28,7 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = (data: InsertMessage) => {
+  const onSubmit = (data: ContactData) => {
     mutation.mutate(data, {
       onSuccess: () => {
         form.reset();
@@ -39,17 +47,12 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Name</FormLabel>
                 <FormControl>
-                  <Input 
-                    placeholder="Jane Doe" 
-                    {...field} 
-                    className="bg-secondary/20 border-border/50 focus:border-white/20 h-12 font-mono" 
-                  />
+                  <Input placeholder="Jane Doe" {...field} className="bg-secondary/20 border-border/50 focus:border-white/20 h-12 font-mono" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="email"
@@ -57,18 +60,12 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Email</FormLabel>
                 <FormControl>
-                  <Input 
-                    type="email" 
-                    placeholder="jane@example.com" 
-                    {...field} 
-                    className="bg-secondary/20 border-border/50 focus:border-white/20 h-12 font-mono" 
-                  />
+                  <Input type="email" placeholder="jane@example.com" {...field} className="bg-secondary/20 border-border/50 focus:border-white/20 h-12 font-mono" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="message"
@@ -76,22 +73,13 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Message</FormLabel>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Let's build something amazing..." 
-                    className="min-h-[120px] bg-secondary/20 border-border/50 focus:border-white/20 font-mono resize-none" 
-                    {...field} 
-                  />
+                  <Textarea placeholder="Let's build something amazing..." className="min-h-[120px] bg-secondary/20 border-border/50 focus:border-white/20 font-mono resize-none" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-
-          <Button 
-            type="submit" 
-            className="w-full h-12 font-mono text-xs uppercase tracking-wider"
-            disabled={mutation.isPending}
-          >
+          <Button type="submit" className="w-full h-12 font-mono text-xs uppercase tracking-wider" disabled={mutation.isPending}>
             {mutation.isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
