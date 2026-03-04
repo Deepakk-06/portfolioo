@@ -1,66 +1,115 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type InsertMessage } from "@shared/routes";
+import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 
-// Fetch Projects
 export function useProjects() {
-  return useQuery({
-    queryKey: [api.projects.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.projects.list.path);
-      if (!res.ok) throw new Error("Failed to fetch projects");
-      return api.projects.list.responses[200].parse(await res.json());
+  const projects = [
+    {
+      id: 1,
+      title: "LiDAR-Powered Autonomous Mapping & Navigation",
+      description: "Deployed 2D LiDAR-based SLAM pipeline using SLAM Toolbox inside a Gazebo-simulated multi-obstacle environment. Achieved real-time occupancy grid map generation with full robot trajectory visualization and loop-closure in RViz.",
+      category: "ROBOTICS",
+      tags: ["ROS 2", "Gazebo", "SLAM Toolbox", "Nav2", "AMCL"],
+      githubUrl: null,
+      videoUrl: "https://drive.google.com/file/d/1pskf5J4I6OG_EVLog-Po9VqRFDxYvnbR/view",
     },
-  });
+    {
+      id: 2,
+      title: "Human-Robot Interaction System using micro-ROS",
+      description: "Developed real-time gesture-based robot control system integrating micro-ROS with ROS 2 Jazzy for low-latency teleoperation. Implemented gesture recognition pipeline to map human hand motions into robot velocity commands via ROS 2 topics.",
+      category: "ROBOTICS",
+      tags: ["ROS 2", "ESP32", "micro-ROS", "Python"],
+      githubUrl: null,
+      videoUrl: "https://drive.google.com/file/d/1vyNcxMrZcYwuTVy3O-ixH8Pn5xwWKJGN/view",
+    },
+    {
+      id: 3,
+      title: "Soil Grain Detection & Mapping System",
+      description: "Built custom YOLO-based object detection model for real-time soil type classification (Red, Black, Perlite, Mixed Soil). Collected, annotated, and trained dataset using transfer learning techniques achieving 92% accuracy.",
+      category: "AI/CV",
+      tags: ["Python", "YOLO", "OpenCV", "Folium", "Google Colab"],
+      githubUrl: null,
+      videoUrl: "https://www.youtube.com/watch?v=Gqag98Drhi4",
+    },
+    {
+      id: 4,
+      title: "PID Line-Following Robot",
+      description: "Designed and fabricated custom robot chassis using CAD software with optimized sensor placement for line detection. Implemented PID control algorithm in C for precise line tracking.",
+      category: "EMBEDDED",
+      tags: ["Arduino", "C", "PID Control", "CAD Design"],
+      githubUrl: null,
+      videoUrl: null,
+    },
+    {
+      id: 5,
+      title: "TeleOperated Mobile Manipulation Platform",
+      description: "Developed integrated mobile platform with 4-DOF robotic arm for autonomous pick-and-place task execution. Implemented inverse and forward kinematics algorithms for precise end-effector positioning.",
+      category: "ROBOTICS",
+      tags: ["ESP32", "Kinematics", "Arduino IDE", "Wireless Control"],
+      githubUrl: null,
+      videoUrl: null,
+    },
+  ];
+
+  return { data: projects, isLoading: false, error: null };
 }
 
-// Fetch Skills
 export function useSkills() {
-  return useQuery({
-    queryKey: [api.skills.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.skills.list.path);
-      if (!res.ok) throw new Error("Failed to fetch skills");
-      return api.skills.list.responses[200].parse(await res.json());
+  const skills = [
+    {
+      id: 1,
+      category: "Programming Languages",
+      items: ["Python", "C", "Arduino C"],
     },
-  });
+    {
+      id: 2,
+      category: "Robotics Frameworks",
+      items: ["ROS 2 (Jazzy)", "micro-ROS", "Navigation2 (Nav2)", "SLAM Toolbox", "AMCL Localization"],
+    },
+    {
+      id: 3,
+      category: "Core Concepts",
+      items: ["Nodes", "Topics", "Services", "Actions", "TF Transforms", "URDF", "Launch Files", "Parameters", "Behavior Trees"],
+    },
+    {
+      id: 4,
+      category: "Computer Vision & AI",
+      items: ["YOLO (Object Detection)", "OpenCV", "Image Processing", "Model Training", "Transfer Learning"],
+    },
+    {
+      id: 5,
+      category: "Embedded Systems",
+      items: ["ESP32", "Arduino Uno/Mega", "Raspberry Pi", "Real-Time Systems", "Sensor Fusion"],
+    },
+    {
+      id: 6,
+      category: "Hardware & Sensors",
+      items: ["LiDAR", "IMU", "Odometry Encoders", "Load Cells", "IR Sensor Arrays", "Ultrasonic Sensors", "Motor Drivers"],
+    },
+    {
+      id: 7,
+      category: "Development Tools",
+      items: ["RViz", "Gazebo", "Arduino IDE", "Linux (Ubuntu)", "Google Colab"],
+    },
+  ];
+
+  return { data: skills, isLoading: false, error: null };
 }
 
-// Contact Form Mutation
 export function useContact() {
   const { toast } = useToast();
-  
-  return useMutation({
-    mutationFn: async (data: InsertMessage) => {
-      // Validate with schema first
-      const validated = api.contact.submit.input.parse(data);
-      
-      const res = await fetch(api.contact.submit.path, {
-        method: api.contact.submit.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-      });
 
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.contact.submit.responses[400].parse(await res.json());
-          throw new Error(error.message);
-        }
-        throw new Error("Failed to send message");
-      }
-      
-      return api.contact.submit.responses[201].parse(await res.json());
-    },
-    onSuccess: (data) => {
+  return useMutation({
+    mutationFn: async (data: any) => {
       toast({
         title: "Message Sent",
-        description: data.message,
+        description: "Thanks for reaching out! I'll get back to you soon.",
       });
+      return data;
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: "Error",
-        description: error.message,
+        description: "Failed to send message.",
         variant: "destructive",
       });
     },
