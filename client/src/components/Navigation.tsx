@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Menu, X, Linkedin, Mail } from "lucide-react";
+import { Menu, X, Linkedin, Mail, Github } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -32,7 +32,7 @@ export function Navigation() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           {links.map((link) => (
-            <a
+            
               key={link.label}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
@@ -48,6 +48,9 @@ export function Navigation() {
             </a>
             <a href="mailto:deeeeps06@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
               <Mail className="w-5 h-5" />
+            </a>
+            <a href="https://github.com/Deepakk-06" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Github className="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -71,7 +74,7 @@ export function Navigation() {
         >
           <div className="flex flex-col space-y-4">
             {links.map((link) => (
-              <a
+              
                 key={link.label}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
@@ -86,6 +89,9 @@ export function Navigation() {
               </a>
               <a href="mailto:deeeeps06@gmail.com" className="text-muted-foreground hover:text-foreground">
                 <Mail className="w-6 h-6" />
+              </a>
+              <a href="https://github.com/Deepakk-06" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
+                <Github className="w-6 h-6" />
               </a>
             </div>
           </div>
