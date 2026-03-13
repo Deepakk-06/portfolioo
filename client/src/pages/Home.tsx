@@ -118,7 +118,7 @@ export default function Home() {
                 className="h-12 px-8 font-mono rounded-none border-border hover:bg-secondary transition-colors group"
                 onClick={() =>
                   window.open(
-                    "https://drive.google.com/file/d/16i5VRggvOxp-5kzRDmh48EcWKlTWRMtI/view?usp=sharing",
+                    "https://drive.google.com/file/d/1QGZ_cDad0CqzNNfafdFNg6p-56Or684b/view?usp=sharing",
                     "_blank",
                   )
                 }
